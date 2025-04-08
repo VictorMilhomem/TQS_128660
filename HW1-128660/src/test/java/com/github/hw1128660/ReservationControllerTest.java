@@ -38,4 +38,22 @@ class ReservationControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.restaurantName").value("Rest A"));
     }
+
+    @Test
+    void shouldCancelReservation() throws Exception {
+        when(reservationService.cancelReservation("ABC123")).thenReturn(true);
+
+        mockMvc.perform(delete("/api/reservations/ABC123"))
+                .andExpect(status().isOk())
+                .andExpect(content().string("Reservation cancelled."));
+    }
+
+    @Test
+    void shouldCheckInReservation() throws Exception {
+        when(reservationService.markReservationAsUsed("XYZ999")).thenReturn(true);
+
+        mockMvc.perform(post("/api/reservations/XYZ999/check-in"))
+                .andExpect(status().isOk())
+                .andExpect(content().string("Checked in."));
+    }
 }

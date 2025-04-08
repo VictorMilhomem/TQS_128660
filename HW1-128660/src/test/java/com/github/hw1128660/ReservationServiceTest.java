@@ -10,8 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.time.LocalDate;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 class ReservationServiceTest {
@@ -34,5 +33,23 @@ class ReservationServiceTest {
         assertNotNull(reservation.getId());
         assertNotNull(reservation.getToken());
         assertFalse(reservation.isUsed());
+    }
+
+    @Test
+    void shouldCancelReservation() {
+        Reservation r = reservationService.createReservation("Rest A", LocalDate.now());
+        boolean cancelled = reservationService.cancelReservation(r.getToken());
+
+        assertTrue(cancelled);
+        assertTrue(reservationRepository.findByToken(r.getToken()).isEmpty());
+    }
+
+    @Test
+    void shouldNotCancelIfAlreadyUsed() {
+        Reservation r = reservationService.createReservation("Rest A", LocalDate.now());
+        reservationService.markReservationAsUsed(r.getToken());
+
+        boolean cancelled = reservationService.cancelReservation(r.getToken());
+        assertFalse(cancelled);
     }
 }

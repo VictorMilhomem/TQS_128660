@@ -35,6 +35,16 @@ public class ReservationController {
     @PostMapping("/{token}/check-in")
     public ResponseEntity<String> checkIn(@PathVariable String token) {
         boolean success = reservationService.markReservationAsUsed(token);
-        return success ? ResponseEntity.ok("Checked in.") : ResponseEntity.badRequest().body("Already used or not found.");
+        return success
+                ? ResponseEntity.ok("Checked in.")
+                : ResponseEntity.badRequest().body("Already used or not found.");
+    }
+    
+    @DeleteMapping("/{token}")
+    public ResponseEntity<String> cancel(@PathVariable String token) {
+        boolean cancelled = reservationService.cancelReservation(token);
+        return cancelled
+                ? ResponseEntity.ok("Reservation cancelled.")
+                : ResponseEntity.badRequest().body("Cannot cancel — not found or already used.");
     }
 }

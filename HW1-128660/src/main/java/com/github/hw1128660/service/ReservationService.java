@@ -42,5 +42,15 @@ public class ReservationService {
             return false;
         }).orElse(false);
     }
+
+    public boolean cancelReservation(String token) {
+        return reservationRepository.findByToken(token).map(res -> {
+            if (!res.isUsed()) {
+                reservationRepository.delete(res);
+                return true;
+            }
+            return false;
+        }).orElse(false);
+    }
 }
 
