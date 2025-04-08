@@ -1,4 +1,7 @@
 package com.github.hw1128660.repository;
 
-public interface IRestaurantRepository {
+import com.github.hw1128660.entity.Restaurant;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface RestaurantRepository extends JpaRepository<Restaurant, Long> {
 }
