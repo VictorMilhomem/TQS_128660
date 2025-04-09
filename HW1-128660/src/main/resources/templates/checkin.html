@@ -1,10 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Reservation Check-In</title>
+    <style>
+        body { font-family: sans-serif; background: #f0f2f5; text-align: center; padding-top: 50px; }
+        .box { background: white; padding: 40px; border-radius: 10px; display: inline-block; box-shadow: 0 2px 12px rgba(0,0,0,0.1); }
+        input { padding: 8px; border-radius: 5px; border: 1px solid #ccc; width: 200px; }
+        button { background-color: #006699; color: white; padding: 10px 18px; border: none; border-radius: 6px; margin-left: 10px; }
+        button:hover { background-color: #004d66; }
+        .success { color: green; margin-top: 20px; font-weight: bold; }
+        .error { color: red; margin-top: 20px; font-weight: bold; }
+        a { margin-top: 30px; display: inline-block; color: #006699; text-decoration: none; }
+    </style>
 </head>
 <body>
-$END$
+<div class="box">
+    <h2>Check-In</h2>
+    <form method="post" action="/checkin">
+        <input type="text" name="token" placeholder="Enter token..." required/>
+        <button type="submit">Check In</button>
+    </form>
+
+    <div th:if="${result != null}" th:class="${result} ? 'success' : 'error'">
+        <p th:text="${result} ? '✅ Reservation verified and marked as used.' : '❌ Invalid token or already used.'"></p>
+    </div>
+
+    <a href="/">Back to Home</a>
+</div>
 </body>
 </html>

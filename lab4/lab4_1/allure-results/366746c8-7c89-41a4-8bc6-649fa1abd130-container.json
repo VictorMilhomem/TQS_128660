@@ -1,0 +1,1 @@
+{"uuid":"366746c8-7c89-41a4-8bc6-649fa1abd130","name":"helloworldIT.setUp","children":["94120107-395a-4c1b-b7f3-81f60945c7ab"],"description":"","befores":[{"name":"setUp","status":"passed","stage":"finished","description":"","steps":[],"attachments":[],"parameters":[],"start":1741348998737,"stop":1741349002542}],"afters":[],"start":1741348998737,"stop":1741349002544}

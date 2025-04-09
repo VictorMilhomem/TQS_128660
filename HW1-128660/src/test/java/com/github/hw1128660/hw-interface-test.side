@@ -1,0 +1,138 @@
+{
+  "id": "45b7b819-5cf9-4629-be74-9cb9cb40009a",
+  "version": "2.0",
+  "name": "hw-interface-test",
+  "url": "http://localhost:8080",
+  "tests": [{
+    "id": "5f037373-e4ad-4e74-9a7b-bffcf33d8adc",
+    "name": "test1",
+    "commands": [{
+      "id": "7abe6cd1-d6a1-446e-858a-1532f972272b",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "dd29c44f-7986-4c81-a34d-aba4954ac705",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "550x693",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "13f816c7-2587-4ea1-8ebc-a87d725636ca",
+      "comment": "",
+      "command": "select",
+      "target": "id=restaurant",
+      "targets": [],
+      "value": "label=Rest B"
+    }, {
+      "id": "bca3a5aa-b71a-4ba3-88b8-1b27f0c37046",
+      "comment": "",
+      "command": "click",
+      "target": "css=option:nth-child(2)",
+      "targets": [
+        ["css=option:nth-child(2)", "css:finder"],
+        ["xpath=//option[@value='Rest B']", "xpath:attributes"],
+        ["xpath=//select[@id='restaurant']/option[2]", "xpath:idRelative"],
+        ["xpath=//option[2]", "xpath:position"],
+        ["xpath=//option[contains(.,'Rest B')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "54a5be4e-cef1-4207-828c-7a9572d45a51",
+      "comment": "",
+      "command": "click",
+      "target": "css=.dropdown > button",
+      "targets": [
+        ["css=.dropdown > button", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'View Meals')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "07746aab-e971-4438-87dd-f986c7732ab5",
+      "comment": "",
+      "command": "click",
+      "target": "id=restaurant",
+      "targets": [
+        ["id=restaurant", "id"],
+        ["name=restaurant", "name"],
+        ["css=#restaurant", "css:finder"],
+        ["xpath=//select[@id='restaurant']", "xpath:attributes"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "4aa55081-b3c4-425a-b4eb-2af57712753a",
+      "comment": "",
+      "command": "select",
+      "target": "id=restaurant",
+      "targets": [],
+      "value": "label=Rest C"
+    }, {
+      "id": "1febbecc-afef-472c-8a11-ba73e36f5dcf",
+      "comment": "",
+      "command": "click",
+      "target": "css=option:nth-child(3)",
+      "targets": [
+        ["css=option:nth-child(3)", "css:finder"],
+        ["xpath=//option[@value='Rest C']", "xpath:attributes"],
+        ["xpath=//select[@id='restaurant']/option[3]", "xpath:idRelative"],
+        ["xpath=//option[3]", "xpath:position"],
+        ["xpath=//option[contains(.,'Rest C')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "364418f0-7626-4375-851f-31f96ad4f383",
+      "comment": "",
+      "command": "click",
+      "target": "css=.dropdown > button",
+      "targets": [
+        ["css=.dropdown > button", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'View Meals')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "9dde8b32-d8a9-44ed-9197-fdeb0a2d680e",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(1) button",
+      "targets": [
+        ["css=tr:nth-child(1) button", "css:finder"],
+        ["xpath=(//button[@type='submit'])[2]", "xpath:attributes"],
+        ["xpath=//form/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Book')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "789e0296-e220-4a5b-98a4-22e71f5711e3",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Back to Home",
+      "targets": [
+        ["linkText=Back to Home", "linkText"],
+        ["css=a", "css:finder"],
+        ["xpath=//a[contains(text(),'Back to Home')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '/')]", "xpath:href"],
+        ["xpath=//a", "xpath:position"],
+        ["xpath=//a[contains(.,'Back to Home')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "3baf418c-d1a3-4aab-86b9-43cff57eb16a",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["5f037373-e4ad-4e74-9a7b-bffcf33d8adc"]
+  }],
+  "urls": ["http://localhost:8080/"],
+  "plugins": []
+}

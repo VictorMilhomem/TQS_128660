@@ -3,7 +3,7 @@ package com.github.hw1128660.entity;
 import java.time.LocalDate;
 
 public class MealWithWeather {
-    private Restaurant restaurantName;
+    private String restaurantName;
     private LocalDate date;
     private String description;
 
@@ -11,18 +11,18 @@ public class MealWithWeather {
     private double temperature;
 
     public MealWithWeather(Meal meal, WeatherForecast weather) {
-        this.restaurantName = meal.getRestaurant();
+        this.restaurantName = meal.getRestaurant().getName();
         this.date = meal.getDate();
         this.description = meal.getDescription();
         this.weatherSummary = weather.getSummary();
         this.temperature = weather.getTemperature();
     }
 
-    public Restaurant getRestaurantName() {
+    public String getRestaurantName() {
         return restaurantName;
     }
 
-    public void setRestaurantName(Restaurant restaurantName) {
+    public void setRestaurantName(String restaurantName) {
         this.restaurantName = restaurantName;
     }
 

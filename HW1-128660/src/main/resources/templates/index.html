@@ -1,10 +1,114 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Moliceiro Meal Reservation</title>
+    <style>
+        body {
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f7fa;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        header {
+            background-color: #006699;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-size: 24px;
+            border-radius: 8px;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 30px auto;
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+        }
+        .dropdown {
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            text-align: left;
+            padding: 12px;
+            border-bottom: 1px solid #ccc;
+        }
+        th {
+            background-color: #e9ecef;
+        }
+        button {
+            background-color: #006699;
+            color: white;
+            padding: 8px 14px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #004d66;
+        }
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 0.9em;
+            color: #888;
+        }
+    </style>
 </head>
 <body>
-$END$
+<header>
+    Moliceiro University Meal Booking
+</header>
+
+<div class="container">
+    <form method="get" action="/">
+        <div class="dropdown">
+            <label for="restaurant">Select Restaurant:</label>
+            <select name="restaurant" id="restaurant">
+                <option th:each="r : ${restaurants}"
+                        th:value="${r.name}"
+                        th:text="${r.name}"
+                        th:selected="${r.name == restaurant}">
+                </option>
+            </select>
+            <button type="submit">View Meals</button>
+        </div>
+    </form>
+
+    <table>
+        <thead>
+        <tr>
+            <th>Date</th>
+            <th>Meal</th>
+            <th>Weather</th>
+            <th>Reserve</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="m : ${meals}">
+            <td th:text="${m.date}"></td>
+            <td th:text="${m.description}"></td>
+            <td th:text="${m.weatherSummary} + ' (' + ${m.temperature} + '°C)'">Sunny</td>
+            <td>
+                <form method="post" action="/reserve">
+                    <input type="hidden" name="restaurant" th:value="${m.restaurantName}"/>
+                    <input type="hidden" name="date" th:value="${m.date}"/>
+                    <button type="submit">Book</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<footer>
+    &copy; 2025 Moliceiro Campus Services
+</footer>
 </body>
 </html>

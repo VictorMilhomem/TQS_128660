@@ -1,10 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Reservation Confirmed</title>
+    <style>
+        body { font-family: sans-serif; background: #f0f2f5; text-align: center; padding-top: 50px; }
+        .box { background: white; padding: 40px; border-radius: 10px; display: inline-block; box-shadow: 0 2px 12px rgba(0,0,0,0.1); }
+        h2 { color: #006699; }
+        p { font-size: 18px; margin-top: 20px; }
+        a { margin-top: 30px; display: inline-block; color: #006699; text-decoration: none; }
+    </style>
 </head>
 <body>
-$END$
+<div class="box">
+    <h2>Reservation Confirmed ✅</h2>
+    <p>Your access token is:</p>
+    <p style="font-size: 24px; font-weight: bold;" th:text="${token}"></p>
+    <a href="/">Back to Home</a>
+</div>
 </body>
 </html>
