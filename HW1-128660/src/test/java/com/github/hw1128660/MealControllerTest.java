@@ -2,6 +2,7 @@ package com.github.hw1128660;
 
 import com.github.hw1128660.controller.MealController;
 import com.github.hw1128660.entity.Meal;
+import com.github.hw1128660.entity.Restaurant;
 import com.github.hw1128660.service.MealService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,8 +28,10 @@ class MealControllerTest {
 
     @Test
     void shouldReturnMealsJson() throws Exception {
+        Restaurant restA = new Restaurant(1L, "Rest A", "Aveiro");
+
         List<Meal> meals = List.of(
-                new Meal("Rest A", LocalDate.now(), "Soup + Steak")
+                new Meal(restA, LocalDate.now(), "Soup + Steak")
         );
 
         when(mealService.getMealsForRestaurant("Rest A")).thenReturn(meals);
@@ -36,6 +39,7 @@ class MealControllerTest {
         mockMvc.perform(get("/api/meals?restaurant=Rest A"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.length()").value(1))
-                .andExpect(jsonPath("$[0].description").value("Soup + Steak"));
+                .andExpect(jsonPath("$[0].description").value("Soup + Steak"))
+                .andExpect(jsonPath("$[0].restaurant.name").value("Rest A"));
     }
 }

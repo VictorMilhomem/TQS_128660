@@ -10,19 +10,23 @@ public class Meal {
     @GeneratedValue
     private Long id;
 
-    private String restaurantName;
+    @ManyToOne
+    @JoinColumn(name = "restaurant_id", nullable = false)
+    private Restaurant restaurant;
+
     private LocalDate date;
     private String description;
 
-    public Meal(Long id, String restaurantName, LocalDate date, String description) {
+    public Meal(Long id, Restaurant restaurant, LocalDate date, String description) {
         this.id = id;
-        this.restaurantName = restaurantName;
+        this.restaurant = restaurant;
         this.date = date;
         this.description = description;
     }
 
-    public Meal(String restaurantName, LocalDate date, String description) {
-        this.restaurantName = restaurantName;
+
+    public Meal(Restaurant restaurant, LocalDate date, String description) {
+        this.restaurant = restaurant;
         this.date = date;
         this.description = description;
     }
@@ -40,13 +44,14 @@ public class Meal {
         this.id = id;
     }
 
-    public String getRestaurantName() {
-        return restaurantName;
+    public Restaurant getRestaurant() {
+        return restaurant;
     }
 
-    public void setRestaurantName(String restaurantName) {
-        this.restaurantName = restaurantName;
+    public void setRestaurant(Restaurant restaurant) {
+        this.restaurant = restaurant;
     }
+
 
     public LocalDate getDate() {
         return date;
